@@ -1,0 +1,210 @@
+@import "../../responsive.scss";
+
+.footer-container {
+  width: 100%;
+  background-color: #1E1E1E;
+
+  .footer-content {
+    margin: auto;
+    text-align: center;
+    width: 90%;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: medium;
+
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      color: #B5B4AF;
+      margin-top: 8px;
+      gap: 10px;
+
+      .column-title {
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      .footer-list {
+        margin-top: 5px;
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        li {
+          padding: 5px 0px;
+          margin-bottom: 5px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .social-title {
+      color: white;
+      font-weight: 700;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .social-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      font-size: 16px;
+      color: white;
+
+      .social-button {
+        width: 26px;
+        height: 25px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .signup-button {
+      margin-top: 10px;
+      background-color: rgb(8, 3, 156);
+      color: white;
+      border-radius: 30px;
+      font-size: 15px;
+      padding: 12px 24px;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .footer-hr {
+    width: 90%;
+    border-color: gray;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+    width: 88%;
+    margin: auto;
+    padding: 10px 0px;
+
+    .footer-bottom-left {
+      display: flex;
+      align-items: baseline;
+      color: #727272;
+
+      .logo {
+        margin-right: 10px;
+        display: flex;
+        align-items: baseline;
+
+        h1 {
+          color: rgb(246, 87, 25);
+          font-size: 50px;
+        }
+        h2 {
+          color: aquamarine;
+          font-size: 35px;
+        }
+      }
+
+      .copyright {
+        align-items: baseline;
+        font-size: 18px;
+      }
+    }
+
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      .footer-bottom-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        .logo {
+        //   flex-direction: column;
+          align-items: center;
+          h1 {
+            font-size: 20px;
+          }
+          h2 {
+            font-size: 10px;
+          }
+        }
+        .copyright {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    @include md {
+      .footer-bottom-left {
+        .logo {
+          h1 {
+            font-size: 40px;
+          }
+          h2 {
+            font-size: 30px;
+          }
+        }
+        .copyright {
+          font-size: 16px;
+        }
+      }
+    }
+
+    @include lg {
+      .footer-bottom-left {
+        .logo {
+          h1 {
+            font-size: 45px;
+          }
+          h2 {
+            font-size: 32px;
+          }
+        }
+        .copyright {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
