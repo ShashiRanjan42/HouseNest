@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const apiRequest = axios.create({
-    baseURL:"http://localhost:3000/api",
+    // baseURL:"http://localhost:3000/api",
+    baseURL:"https://housenest.onrender.com/api",
     withCredentials: true,
 });
 
