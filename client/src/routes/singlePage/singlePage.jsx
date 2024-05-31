@@ -4,7 +4,7 @@ import Slider from "../../components/slider/Slider";
 // import { singlePostData, userData } from "../../lib/dummydata";
 import Map from "../../components/map/Map";
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import DOMPurify from "DOMPurify";
+import DOMPurify from "dompurify";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import Footer from "../../components/footer/footer";
