@@ -1,53 +1,44 @@
-import { Server } from "socket.io";
-
-const PORT = 4000; // Define the port number
+import {Server} from "socket.io";
 
 const io = new Server({
-  cors: {
-    origin: "https://house-nest.vercel.app",
-  },
-});
+    cors: {
+      origin: "http://localhost:5173",
+    },
+  });
 
-let onlineUsers = [];
+let onlineUser = [];
 
 const addUser = (userId, socketId) => {
-  const userExists = onlineUsers.find((user) => user.userId === userId);
-  if (!userExists) {
-    onlineUsers.push({ userId, socketId });
-  }
+    const userExits = onlineUser.find((user) => user.userId === userId);
+    if(!userExits) {
+        onlineUser.push({ userId, socketId});
+    }
 };
 
+// jb tab close krenge tb socket ko htana hoga
 const removeUser = (socketId) => {
-  onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
+    onlineUser = onlineUser.filter((user) => user.socketId !== socketId);
 };
 
+// find user
 const getUser = (userId) => {
-  return onlineUsers.find((user) => user.userId === userId);
+    return onlineUser.find((user) => user.userId !== userId);
 };
 
 io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
+    socket.on("newUser", (userId) => {
+        addUser(userId, socket.id);
+    });
 
-  socket.on("newUser", (userId) => {
-    console.log("New user joined:", userId);
-    addUser(userId, socket.id);
-  });
+    socket.on("sendMessage", ({ receiverId, data }) => {
+        const receiver = getUser(receiverId);
+        io.to(receiver.socketId).emit("getMessage", data);
+    });
 
-  socket.on("sendMessage", ({ receiverId, data }) => {
-    const receiver = getUser(receiverId);
-    if (receiver) {
-      io.to(receiver.socketId).emit("getMessage", data);
-    } else {
-      console.log("User not found:", receiverId);
-    }
-  });
-
-  socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
-    removeUser(socket.id);
-  });
+    socket.on("disconnect", () => {
+        removeUser(socket.id);
+    });
 });
 
-io.listen(PORT, () => {
-  console.log(`Socket.io server listening on port ${PORT}`);
-});
+
+io.listen("4000");
